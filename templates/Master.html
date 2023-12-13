@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Komoot Statistics</title>
+
+    <link href="{{ url_for('static', filename='CSS/NavBar.css')}}" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='JS/Script.js')}}"></script>
+
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <div id="mainBar">
+        <ul class="HorBarUl">
+            <li id="Li1">
+                <a href="{{url_for('home')}}">Home</a>
+            </li>
+            <li>
+                <a href="{{url_for('mainstat')}}">Statistics</a>
+            </li>
+        </ul>
+    </div>
+
+ {% block content %}
+{% endblock %}
+
+
+</div>
+
+</body>
+</html>

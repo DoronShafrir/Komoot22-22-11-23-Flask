@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+    margin: 0;
+
+}
+
+
+.HorBarUl {
+    list-style-type: none;
+    position:sticky;
+    z-index:1000;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    background-color: aqua;
+    font-size: 1.5rem;
+}
+
+    .HorBarUl li {
+        float: left;
+        width: 12%;
+    }
+
+        .HorBarUl li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            .HorBarUl li a:hover {
+                background-color: aquamarine;
+            }
+
+    .HorBarUl .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: lightblue;
+        min-width: 12%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .HorBarUl .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+
+    .HorBarUl .dropdown:hover .dropdown-content {
+        display: block;
+    }
+

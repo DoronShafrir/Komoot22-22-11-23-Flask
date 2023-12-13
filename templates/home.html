@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+{% block title %}
+<link href="{{ url_for('static', filename='CSS/Main.css')}}" rel="stylesheet" />
+<script src="{{ url_for('static', filename='JS/Script.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="body">
+    <h1 style="color: #abcdef"> Log In for Komoot Statistics application</h1>
+    <h2>Last time of updated from Komoot: {{updated_time}}</h2>
+        <form action="#" method="post">
+            <p>E-Mail:</p>
+            <p><input type="email" name="email" placeholder="your email" onkeyup="checkName(this, 'msgMailCheck')"/>
+                <span id="msgMailCheck" class="warning"></span> </p></p>
+            <p>Password</p>
+            <p><input type="password" name="password" placeholder="your password" onkeyup="checkName(this,'msgPassCheck')"/>
+                <span id="msgPassCheck" class="warning"></span> </p>
+            <p><input type="submit" value="submit" onclick="return check_warning()"/>
+            <span id="letter_error" style="color:red;">fix errors in name and password</span></p>
+        </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p style="color:red; font=bold; font-size:20:px;">{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <a href="{{url_for('mainstat')}}" style="display:{{display_status}}">Move to get data</a>
+</div>
+{% endblock %}

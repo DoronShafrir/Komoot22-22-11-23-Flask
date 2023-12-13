@@ -1,0 +1,98 @@
+{% extends "master.html" %}
+{% block title %}
+<link href="{{ url_for('static', filename='CSS/Main.css')}}" rel="stylesheet"/>
+<script src="{{ url_for('static', filename='JS/Script.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="body">
+
+    <h1 style="color: #abcdef"> Main Statistics Page </h1>
+    <h2>Last time of updated from Komoot: {{updated_time}}</h2>
+    <div class="split left">
+        <div class="left-content">
+            <form id="options" class="radio" method="post">
+                <div class="week_days_options">
+                    <input type="radio" name="week_days_options" value="weekly" id="weekly" checked="checked"
+                           class="week_days">
+                    <label for="weekly">Per Week</label>
+                    <input type="radio" name="week_days_options" value="daily" id="daily" class="week_days">
+                    <label for="daily">Per Day</label>
+                </div>
+                <div class="from_when">
+                    <input type="radio" name="from_when" value="day_one" id="day_one" >
+                    <label for="day_one">From Day One</label>
+                    <input type="radio" name="from_when" value="year_start" id="year start" checked="checked" >
+                    <label for="year_start">From January 1st this year</label>
+                    <input type="radio" name="from_when" value="from_date" id="from_date" >
+                    <label for="from_date">From Date</label>
+
+                    <input type="date" name="date"  placeholder="start date" id="start_date">
+
+
+                </div>
+                <input type="submit" value="Submit" class="button">
+                <div id="date">
+
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="table">
+            <table id="main-table">
+                <tr>
+                    <th>1st Date of the week</th>
+                    <th>Duration</th>
+                    <th>Distance</th>
+                    <th>Number of rides</th>
+                </tr>
+
+
+                {% for record in stat_data %}
+                <tr>
+                    <td>{{record[0]}}</td>
+                    <td>{{record[1]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[3]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="split right">
+    <div class="right-content">
+        <div class="table">
+            <table id="summary-table">
+                <tr>
+                    <th>Total Cycling Time</th>
+                    <th>Total Distance</th>
+                    <th>Total Number of rides</th>
+                </tr>
+
+                <tr>
+                    <td>{{summary[0]}}</td>
+                    <td>{{summary[1]}}</td>
+                    <td>{{summary[2]}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    let from_when = document.querySelector('.from_when');
+    from_when.addEventListener('change', () =>{
+    let start_date = document.getElementById("start_date");
+    let from_date = document.getElementById("from_date");
+
+    if (from_date.checked){ start_date.style.display = "block" }
+    else{ start_date.style.display = "none" };})
+
+</script>
+
+{% endblock %}
+
+
