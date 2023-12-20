@@ -51,20 +51,21 @@ def mainstat():
         print(f"status of radio buttons  from when: {from_when}")
         print(f"status of start date: {start_date}")
         conf = confirm_create([start_date] ,week_days_options, from_when)
-
+        daily = 1 if week_days_options == "daily" else 0
         stat_data = K_Analize(conf)
         updated_time = date_of_main()
         return render_template("main-stat.html", stat_data=stat_data.data, summary=stat_data.summary,
-                               updated_time=updated_time)
+                               updated_time=updated_time, daily=daily)
     else:
         today_gen = dt.now()
         today_str = [f"{today_gen.year}-{today_gen.month}-{today_gen.day}"]
         conf = confirm_create(today_str)
         stat_data = K_Analize(conf)
+        daily = 0
 
     updated_time = date_of_main()
     return render_template("main-stat.html", stat_data=stat_data.data, summary=stat_data.summary,
-                           updated_time=updated_time)
+                           updated_time=updated_time, daily=daily)
 
 #--------------this rpocedure convert the radio swiches to a configuration list------------------#
 def confirm_create(start_date , week_days_options = 'weekly', from_when = 'from_date' ):
@@ -80,11 +81,15 @@ def confirm_create(start_date , week_days_options = 'weekly', from_when = 'from_
 
 #--------------this pocedure get from the OS the last time main.csv was updated------------------#
 def date_of_main():
-    file_name = Path("main.csv")
-    time = file_name.stat().st_mtime
-    t = dt.fromtimestamp(time) #time stamp
-    minutes = f"0{t.minute}" if t.minute <10 else t.minute
-    return f"{t.day}/{t.month}/{t.year}  {t.hour}:{minutes}"
+    try:
+        file_name = Path("main.csv")
+        time = file_name.stat().st_mtime
+        t = dt.fromtimestamp(time) #time stamp
+        minutes = f"0{t.minute}" if t.minute <10 else t.minute
+        return f"{t.day}/{t.month}/{t.year}  {t.hour}:{minutes}"
+    except Exception:
+        return "main.csv does not exist"
+
 
 if __name__ == "__main__":
     app.run()
