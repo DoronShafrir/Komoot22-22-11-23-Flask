@@ -1,0 +1,76 @@
+html{
+scroll-behavior: smooth;
+scroll-padding-top: 400px;
+}
+body {
+background-height:100%;
+background-color:#eaebc7;
+color:#6f5bd4;
+}
+
+.comments-table{
+text-align: center
+position:fix;
+scroll-padding-top: 400px;
+
+}
+td, th{
+width:100px;
+text-align:center
+}
+.w_comment{
+text-align: left;
+width:500px;
+}
+table#comments-table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+
+}
+
+.right {
+  right: 0;
+}
+.right-content, .left-content{
+margin-top:15%;
+}
+.table{
+        text-align : center;
+}
+#summary-table{
+    border: 1px solid #8b0b10;
+    text-align: 20%;
+    padding: 8px;
+    margin-left:center;
+    border-collapse: collapse;
+    margin-left:15%;
+}
+#summary-table th, #summary-table td {
+padding: 10px;
+border: 1px solid #8b0b10;
+}
+#summary-table td {
+color: green;
+font-weight: bold;
+}
+
+#start_date{
+display:none;
+}
+#letter_error{
+display:none;
+}

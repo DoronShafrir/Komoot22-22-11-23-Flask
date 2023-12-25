@@ -4,6 +4,7 @@ from  Komoot_Ana3 import K_Analize
 from FetchTours import API
 from datetime import datetime as dt
 from pathlib import Path
+from Comments import Comments as cm
 
 '''-----Initialization---------'''
 app = Flask(__name__)
@@ -66,6 +67,11 @@ def mainstat():
     updated_time = date_of_main()
     return render_template("main-stat.html", stat_data=stat_data.data, summary=stat_data.summary,
                            updated_time=updated_time, daily=daily)
+
+@app.route("/comments", methods=["POST", "GET"])
+def comments():
+    comments_data = cm.show_comments()
+    return render_template("comments.html", comments=comments_data)
 
 #--------------this rpocedure convert the radio swiches to a configuration list------------------#
 def confirm_create(start_date , week_days_options = 'weekly', from_when = 'from_date' ):

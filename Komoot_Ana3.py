@@ -55,26 +55,6 @@ class K_Analize():
         self.summary.append(s_list.Count.sum())
         return data
 
-    #----------print details to screen - -----------  #
-    # def print_details_Df(self):_list = self.pandas_weekly_table
-    #     s
-    #     k_list = self.pandas_from_start_date
-    #     k_list = k_list.sort_values(by="Date", ascending=False)
-    #     data = []
-    #     for n in range(len(k_list)):
-    #         line = []
-    #         line.append(str(k_list.Date.iloc[n])[:10])
-    #         line.append(str(round((k_list.Duration.iloc[n]), 2)))
-    #         line.append(str(round((k_list.Distance.iloc[n]), 2)))
-    #         # line.append(str(round((k_list.Count.iloc[n]), 2)))
-    #         line.append('1')
-    #         data.append(line)
-    #
-    #     self.summary.append(str(round(s_list.Duration.sum(), 2)))
-    #     self.summary.append(str(round(s_list.Distance.sum(), 2)))
-    #     self.summary.append(s_list.Count.sum())
-    #
-    #     return data
 
 
 

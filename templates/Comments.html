@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+{% block title %}
+<link href="{{ url_for('static', filename='CSS/Comments.css')}}" rel="stylesheet"/>
+<script src="{{ url_for('static', filename='JS/Script.js')}}"></script>
+{% endblock %}
+
+
+
+{% block content %}
+<h1> Page to add missing tours and details</h1>
+
+<div class="comments_table">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th class="w_comment">Comment</th>
+                    <th>Number of rides</th>
+                    <th>Distance</th>
+                </tr>
+
+
+                {% for record in comments %}
+                <tr>
+                    <td>{{record[0]}}</td>
+                    <td class="w_comment">{{record[1]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[3]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+</div>
+{% endblock %}
